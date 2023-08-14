@@ -37,9 +37,9 @@ Resources:
       UserData: 
         Fn::Base64: |
             #! /bin/bash
-            yum update -y
-            yum install httpd -y
-            FOLDER="https://github.com/Alfred-Dreyfus/portfolio-web.git"
+            apt update -y
+            apt install apache2
+            FOLDER="https://raw.githubusercontent.com/Alfred-Dreyfus/portfolio-web"
             cd /var/www/html
             wget ${FOLDER}/index.html
             wget ${FOLDER}/style.css
@@ -49,8 +49,7 @@ Resources:
             wget ${FOLDER}/bg4.jpg
             wget ${FOLDER}/erdem.png
             wget ${FOLDER}/logo.jpeg
-            systemctl start httpd
-            systemctl enable httpd
+            service apache2 start
 
 Outputs:
   WebsiteURL:
